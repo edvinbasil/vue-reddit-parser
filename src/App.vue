@@ -10,18 +10,18 @@
     </ul>
     <h1>{{ title }}</h1>
     <main>
-      <sPost v-for="post in posts" :post="post" :key="post.data.id"></sPost>
+      <SinglePost v-for="post in posts" :post="post" :key="post.data.id"></SinglePost>
     </main>
   </div>
 </template>
 
 <script>
-import sPost from './components/sPost.vue';
+import SinglePost from './components/SinglePost.vue';
 
 export default {
   name: 'app',
   components: {
-    sPost,
+    SinglePost,
   },
   data() {
     return {
