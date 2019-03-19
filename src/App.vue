@@ -1,31 +1,31 @@
 <template>
-  <div id="app" class="container">
+  <div id="app" class="container mt-2">
     <h1>{{ title }}</h1>
     <main>
-      <div v-for="post in posts" class="media m-3" :key="post.data.id">
-        <img :src="post.data.thumbnail" class="mr-3" alt="">
-        <div class="media-body">
-          <a :href="makeLink(post.data.permalink)" target="_blank" rel="noreferrer noopener">
-            <h5 class="mt-0">{{ post.data.title }}</h5>
-          </a>
-          <div class="badge badge-danger">{{ post.data.ups }} &#x2B06;</div>
-          <div> {{ post.data.selftext }}</div>
-        </div>
-      </div>
+      <sPost v-for="post in posts" :post="post" :key="post.data.id"></sPost>
     </main>
   </div>
 </template>
 
 <script>
+import sPost from './components/sPost.vue';
 
 export default {
   name: 'app',
+  components: {
+    sPost,
+  },
   data() {
     return {
-      url: 'https://www.reddit.com/r/PewdiepieSubmissions/.json',
+      subreddit: 'PewdiepieSubmissions',
       title: 'Subreddit',
       posts: [],
     };
+  },
+  computed: {
+    url() {
+      return `https://www.reddit.com/r/${this.subreddit}/.json`;
+    },
   },
   mounted() {
     this.fetchReddit(this.url);
@@ -39,9 +39,6 @@ export default {
           this.posts = result.data.children;
           this.title = this.posts[0].data.subreddit;
         });
-    },
-    makeLink(perm) {
-      return `https://www.reddit.com${perm}`;
     },
   },
 };
