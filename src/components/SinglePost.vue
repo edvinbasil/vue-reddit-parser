@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: 'sPost',
+  name: 'SinglePost',
   props: ['post'],
   methods: {
     makeLink(perm) {
