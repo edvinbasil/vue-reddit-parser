@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     imgUrl() {
-      return this.post.data.thumbnail === 'self' ? 'https://via.placeholder.com/160?text=No+Image+:(' : this.post.data.thumbnail;
+      return this.post.data.thumbnail.match('^http.*') ? this.post.data.thumbnail : 'https://via.placeholder.com/160?text=No+Image+:(';
     },
   },
 };
