@@ -1,9 +1,16 @@
 <template>
   <div id="app" class="container">
-    <NavBar v-bind="{fetchReddit, url}" v-model="subreddit"></NavBar>
-    <h1 class="text-center m-3">{{ title }}</h1>
+    <NavBar
+      v-bind="{fetchReddit, url}"
+      v-model="subreddit"
+    />
     <main>
-      <SinglePost v-for="post in posts" :post="post" :key="post.data.id"></SinglePost>
+      <h1 class="text-center m-3">{{ title }}</h1>
+      <SinglePost
+        v-for="post in posts"
+        :post="post"
+        :key="post.data.id"
+      />
     </main>
   </div>
 </template>
