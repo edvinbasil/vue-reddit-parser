@@ -24,6 +24,15 @@ npm run test
 ```
 npm run lint
 ```
+## Using Docker
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Build the image
+```
+docker build -t reddit-parser .
+```
+
+### Run the container
+```
+docker run -it -v ${PWD}/src:/usr/src/app/src -p 8080:8080 reddit-parser
+```
+
